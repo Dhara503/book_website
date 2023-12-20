@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- fevicol -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .container {
+            padding: 10px 10px;
+        }
+        .container {
+            margin: 0 40px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: block;
+            margin: 50px auto;
+            border: 1px solid #27ae60;
+            width: fit-content;
+            padding: 14px 50px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #fff;
+            transition: background 0.5s;
+        }
+        .btn:hover {
+            background: #27ae60;
+        }
+        /* contact section */
+        .contact-left {
+            flex-basis: 35%;
+        }
+
+        .contact-right {
+            flex-basis: 60%;
+        }
+
+        .contact-left p {
+            margin-top: 30px;
+        }
+
+        .contact-left p i {
+            margin-right: 10px;
+            color: #27ae60;
+            font-size: 25px;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            font-size: 30px;
+            margin-right: 15px;
+            color: #ababab;
+            display: inline-block;
+            transition: transform 0.5s;
+        }
+
+        .social-icons a:hover {
+            color: #27ae60;
+            transform: translateY(-5px);
+        }
+
+        .btn.btn2 {
+            display: inline-block;
+            background: #27ae60;
+        }
+
+        .contact-right form {
+            width: 100%;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            border: 0;
+            outline: none;
+            background: #cafedf;
+            padding: 15px;
+            margin: 15px 0;
+            color: #ffffff;
+            border-radius: 6px;
+            font-size: 18px;
+
+        }
+
+        form .btn2 {
+            padding: 14px 60px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact me</h1>
+                    <p><i class="fa-solid fa-envelope"></i>dharmraj.official@gmail.com</p>
+                    <p> <i class="fa-solid fa-phone-volume"></i>+91 8849127971</p>
+                    <div class="social-icons">
+                        <a href="https://wa.me/918849127971"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href=""><i class="fa-brands fa-square-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="companyname" placeholder="Your Company Name" required>
+                        <input type="text" name="email" placeholder="email id" required>
+                        <input type="number" name="mobile number" placeholder="Contact number" required>
+                        <textarea name="product" id="" cols="30" rows="6" placeholder="Your Requirement"></textarea>
+                        <button type="submit" class="btn btn2 " reset>Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <script>
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+    
+            function opentab(tabname) {
+                for (tablink of tablinks) {
+                    tablink.classList.remove("active-link");
+                }
+                for (tabcontent of tabcontents) {
+                    tabcontent.classList.remove("active-tab");
+                }
+    
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            };
+    sidemenu = document.getElementById('sidemenu')
+    
+    function openmenu() {
+        sidemenu.style.right ="0"    
+    }
+    function closemenu() {
+        sidemenu.style.right ="-200px"    
+    }
+    
+    
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyX7qmRxR-ppgOuDiSAWeXBNcUg5ZyVPPjcrp0GQ6BZTUJr2rP9SizSXyR8V3ni917NSQ/exec'
+      const form = document.forms['submit-to-google-sheet']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => console.log('Success!', response))
+          .catch(error => console.error('Error!', error.message))
+      })
+    
+    
+        </script>
+
+</body>
+
+</html>
